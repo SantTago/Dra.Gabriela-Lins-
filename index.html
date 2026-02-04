@@ -186,31 +186,31 @@
       
 
       const VIDEOS = [
-        {
-          id: 1,
-          url: "videos/01.mp4",
-        
-          title: "Cólicas em Bebês"
-        },
-        {
-          id: 2,
-          url: "videos/02.mp4", // Ajuste o nome do arquivo se necessário
-         
-          title: "Dicas de Sono"
-        },
-        {
-          id: 3,
-          url: "videos/03.mp4",
-          
-          title: "Desenvolvimento"
-        },
-        {
-          id: 4,
-          url: "videos/04.mp4",
-         
-          title: "Amamentação"
-        }
-      ];
+          {
+            id: 1,
+            url: "videos/01.mp4",
+            poster: "videos/01.jpeg", // Corrigido aqui
+            title: ""
+          },
+          {
+            id: 2,
+            url: "videos/02.mp4",
+            poster: "videos/02.jpeg", // Corrigido aqui
+            title: ""
+          },
+          {
+            id: 3,
+            url: "videos/03.mp4",
+            poster: "videos/03.jpeg", // Corrigido aqui
+            title: ""
+          },
+          {
+            id: 4,
+            url: "videos/04.mp4",
+            poster: "videos/04.jpeg", // Corrigido aqui
+            title: ""
+          }
+        ];
       // --- COMPONENTS ---
 
       const Header = () => {
@@ -688,9 +688,9 @@
                   >
                     <video 
                       className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-                      poster={video.poster}
+                      poster={video.poster} // Verifique se aqui está escrito exatamente assim
                       playsInline
-                      muted={isMuted} // Controlado pelo estado
+                      muted={isMuted}
                       loop
                       onMouseOver={e => e.target.play()}
                       onMouseOut={e => { e.target.pause(); e.target.currentTime = 0; }}
