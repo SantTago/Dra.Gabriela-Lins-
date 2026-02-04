@@ -183,29 +183,34 @@
         }
       ];
 
+      
+
       const VIDEOS = [
         {
           id: 1,
-          poster: "https://images.unsplash.com/photo-1544126566-475a1062b183?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          url: "videos/01.mp4",
+        
           title: "Cólicas em Bebês"
         },
         {
           id: 2,
-          poster: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          url: "videos/02.mp4", // Ajuste o nome do arquivo se necessário
+         
           title: "Dicas de Sono"
         },
         {
           id: 3,
-          poster: "https://images.unsplash.com/photo-1519689680058-324335c77eba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          url: "videos/03.mp4",
+          
           title: "Desenvolvimento"
         },
         {
           id: 4,
-          poster: "https://images.unsplash.com/photo-1594824476961-b7aa59a941e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          url: "videos/04.mp4",
+         
           title: "Amamentação"
         }
       ];
-
       // --- COMPONENTS ---
 
       const Header = () => {
@@ -252,6 +257,9 @@
                 Agende Agora
               </button>
             </div>
+
+
+            
           </header>
         );
       };
@@ -537,24 +545,115 @@
         );
       };
 
+     const MapSection = () => {
+        // Endereço exato para os links de navegação
+        const enderecoExato = "Rua Urbano Santos, 155, Centro, Imperatriz - MA";
+        const googleMapsLink = "https://www.google.com/maps/search/?api=1&query=Dra+Gabriela+Lins+Imperatriz";
+        const wazeLink = `https://waze.com/ul?q=${encodeURIComponent(enderecoExato)}&navigate=yes`;
+
+        return (
+          <section className="py-20 bg-[#FFF0F3] relative"> {/* Fundo Rosa Bebê */}
+            <div className="container mx-auto px-6">
+              <div className="text-center mb-12">
+                <h2 className="text-brand-pink font-bold uppercase tracking-widest text-sm mb-3">Localização</h2>
+                <h3 className="font-serif text-4xl md:text-5xl font-bold text-gray-900">Nosso Consultório</h3>
+              </div>
+              
+              <div className="relative group">
+                {/* Card Informativo Superior (Marcado bem em cima) */}
+                <div className="absolute top-6 left-6 right-6 md:left-10 md:w-80 z-30 bg-white/95 backdrop-blur-md p-6 rounded-3xl shadow-2xl border border-brand-pink/20">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <div className="bg-brand-pink/10 p-2 rounded-full">
+                      <Heart className="w-6 h-6 text-brand-pink" />
+                    </div>
+                    <div>
+                      <h4 className="font-serif font-bold text-lg text-gray-800 leading-tight">Dra. Gabriela Lins</h4>
+                      <span className="text-xs text-brand-green font-bold uppercase tracking-tighter">Osteopatia Pediátrica</span>
+                    </div>
+                  </div>
+                  
+                  <p className="text-gray-600 text-sm mb-6">
+                    {enderecoExato} <br />
+                    <span className="font-semibold">Edifício Office Center</span>
+                  </p>
+                  
+                  {/* Botões de Opções de GPS */}
+                  <div className="space-y-3">
+                    <a 
+                      href={googleMapsLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center space-x-2 bg-brand-pink hover:bg-pink-600 text-white py-3 rounded-xl text-sm font-bold transition-all shadow-md active:scale-95 w-full"
+                    >
+                      <span>Abrir no Google Maps</span>
+                    </a>
+                    <a 
+                      href={wazeLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center space-x-2 bg-white border-2 border-brand-pink/30 text-brand-pink hover:bg-brand-pink/5 py-3 rounded-xl text-sm font-bold transition-all active:scale-95 w-full"
+                    >
+                      <span>Ir pelo Waze</span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Container do Mapa Responsivo */}
+                <div className="relative w-full h-[500px] md:h-[600px] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
+                  {/* O iframe abaixo usa o link que você indicou como base para o endereço correto */}
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.241576435011!2d-47.4839!3d-5.5264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMzEnMzUuMCJTIDQ3wrAyOScwMi4wIlc!5e0!3m2!1spt-BR!2sbr!4v1710000000000" 
+                    className="absolute inset-0 w-full h-full grayscale-[15%] contrast-[105%]"
+                    allowFullScreen="" 
+                    loading="lazy"
+                    title="Mapa de Localização"
+                  ></iframe>
+                  
+                  {/* Overlay Rosa para harmonia artística */}
+                  <div className="absolute inset-0 bg-brand-pink/5 pointer-events-none"></div>
+                </div>
+              </div>
+
+              {/* Detalhes de Acesso */}
+              <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-6 text-gray-500 text-sm">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-brand-green rounded-full"></div>
+                  <span>Estacionamento disponível no local</span>
+                </div>
+                <div className="hidden md:block w-1 h-1 bg-gray-300 rounded-full"></div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-brand-pink rounded-full"></div>
+                  <span>Acesso facilitado para carrinhos de bebê</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      };
+
+
+
+
+
+
       const VideoCarousel = () => {
         const scrollContainerRef = useRef(null);
+        // Estado para controlar se o som está ligado ou não globalmente
+        const [isMuted, setIsMuted] = useState(true);
 
         const scroll = (direction) => {
           if (scrollContainerRef.current) {
             const scrollAmount = 300;
-            const container = scrollContainerRef.current;
-            // Native smooth scroll (might fail gracefully on very old iOS)
-            if (container.scrollBy) {
-                container.scrollBy({
-                    left: direction === 'right' ? scrollAmount : -scrollAmount,
-                    behavior: 'smooth'
-                });
-            } else {
-                // Fallback for very old devices
-                container.scrollLeft += direction === 'right' ? scrollAmount : -scrollAmount;
-            }
+            scrollContainerRef.current.scrollBy({
+              left: direction === 'right' ? scrollAmount : -scrollAmount,
+              behavior: 'smooth'
+            });
           }
+        };
+
+        const toggleMute = (e) => {
+          e.stopPropagation(); // Evita conflitos de clique
+          setIsMuted(!isMuted);
         };
 
         return (
@@ -567,52 +666,66 @@
                     Dicas da Dra. Gabriela
                   </h3>
                 </div>
-                {/* Navigation Buttons (Hidden on mobile usually, but kept for legacy) */}
                 <div className="hidden md:flex space-x-4">
-                  <button 
-                    onClick={() => scroll('left')}
-                    className="p-4 rounded-full border border-gray-300 hover:bg-white hover:shadow-lg transition-all"
-                  >
+                  <button onClick={() => scroll('left')} className="p-4 rounded-full border border-gray-300 hover:bg-white hover:shadow-lg transition-all">
                     <ChevronLeft className="w-6 h-6 text-gray-600" />
                   </button>
-                  <button 
-                    onClick={() => scroll('right')}
-                    className="p-4 rounded-full border border-gray-300 hover:bg-white hover:shadow-lg transition-all"
-                  >
+                  <button onClick={() => scroll('right')} className="p-4 rounded-full border border-gray-300 hover:bg-white hover:shadow-lg transition-all">
                     <ChevronRight className="w-6 h-6 text-gray-600" />
                   </button>
                 </div>
               </div>
 
-              {/* Carousel */}
               <div 
                 ref={scrollContainerRef}
                 className="flex overflow-x-auto space-x-8 pb-12 -mx-6 px-6 md:mx-0 md:px-0 snap-x snap-mandatory hide-scrollbar"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
                 {VIDEOS.map((video) => (
                   <div 
                     key={video.id} 
-                    className="flex-none w-[280px] md:w-[340px] aspect-[9/16] relative rounded-[2rem] overflow-hidden shadow-xl group cursor-pointer snap-center bg-black transition-transform hover:-translate-y-2 duration-300"
+                    className="flex-none w-[280px] md:w-[340px] aspect-[9/16] relative rounded-[2rem] overflow-hidden shadow-xl group cursor-pointer snap-center bg-black"
+                    onClick={toggleMute}
                   >
-                    <img 
-                      src={video.poster} 
-                      alt={video.title} 
-                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 transform group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <video 
+                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                      poster={video.poster}
+                      playsInline
+                      muted={isMuted} // Controlado pelo estado
+                      loop
+                      onMouseOver={e => e.target.play()}
+                      onMouseOut={e => { e.target.pause(); e.target.currentTime = 0; }}
+                    >
+                      <source src={video.url} type="video/mp4" />
+                      Seu navegador não suporta vídeos.
+                    </video>
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
                     
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <Play className="w-10 h-10 text-white ml-1" fill="white" />
+                    {/* Botão de Som no topo do vídeo */}
+                    <div className="absolute top-6 right-6 z-20">
+                      <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/30">
+                        {isMuted ? (
+                          <VolumeX className="w-5 h-5 text-white" />
+                        ) : (
+                          <Volume2 className="w-5 h-5 text-white animate-pulse" />
+                        )}
                       </div>
                     </div>
 
-                    <div className="absolute bottom-8 left-8 right-8">
+                    {/* Play Icon Overlay (só aparece se estiver pausado) */}
+                    <div className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity pointer-events-none">
+                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/40">
+                        <Play className="w-8 h-8 text-white ml-1" fill="white" />
+                      </div>
+                    </div>
+
+                    <div className="absolute bottom-8 left-8 right-8 pointer-events-none">
                       <p className="text-white font-serif text-2xl font-bold leading-tight">
                         {video.title}
                       </p>
-                      <span className="text-white/80 text-sm mt-3 block font-medium">Assistir Vídeo &rarr;</span>
+                      <span className="text-white/80 text-sm mt-3 block font-medium">
+                        {isMuted ? "Toque para ouvir o áudio" : "Som ativado"}
+                      </span>
                     </div>
                   </div>
                 ))}
@@ -682,7 +795,14 @@
                       <span className="block font-bold text-xl">@gabiosteopatia</span>
                     </div>
                   </a>
+
+
+                  
                 </div>
+
+                
+
+
 
               </div>
             </div>
@@ -706,6 +826,8 @@
         );
       };
 
+      
+
       const App = () => {
         return (
           <div className="font-sans text-brand-text bg-white flex flex-col min-h-screen">
@@ -716,6 +838,7 @@
               <Timeline />
               <Gallery />
               <VideoCarousel />
+              <MapSection /> {/* O mapa aparece aqui agora */}
               <Contact />
             </main>
             <Footer />
@@ -736,5 +859,7 @@
         console.error("Root element not found");
       }
     </script>
+
+
 </body>
 </html>
